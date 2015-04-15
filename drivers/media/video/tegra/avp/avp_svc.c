@@ -826,6 +826,15 @@ struct avp_svc_info *avp_svc_init(struct platform_device *pdev,
 		avp_svc->clks[mod->clk_req].clk = clk;
 		avp_svc->clks[mod->clk_req].mod = mod;
 		avp_svc->clks[mod->clk_req].refcnt = 0;
+
+		/*
+		 * The VDE rate was tied to the video decoding capability.
+		 * For ex, YouTube 720P H.264 HP support. Set the rate to
+		 * ULONG_MAX to always request the max rate whenever this
+		 * request is enabled.
+		 */
+		if (i == AVP_MODULE_ID_VDE)
+			clk_set_rate(clk, ULONG_MAX);
 	}
 
 	avp_svc->sclk = clk_get(&pdev->dev, "sclk");
@@ -845,10 +854,11 @@ struct avp_svc_info *avp_svc_init(struct platform_device *pdev,
 	}
 
 	/*
-	 * The emc is a shared clock, it will be set to the rate
+	 * The sclk/emc is a shared clock, it will be set to the highest
 	 * requested in platform data.  Set the rate to ULONG_MAX
 	 * if platform data is NULL.
 	 */
+	clk_set_rate(avp_svc->sclk, ULONG_MAX);
 	avp_svc->emc_rate = 0;
 	if (pdata) {
 		clk_set_rate(avp_svc->emcclk, pdata->emc_clk_rate);
