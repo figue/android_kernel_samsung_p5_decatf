@@ -151,7 +151,7 @@
 #define AP25_EMC_INTERMEDIATE_RATE	760000000
 #define AP25_EMC_SCALING_STEP		600000000
 
-#if defined(CONFIG_P75XX_OVERCLOCK)
+#if defined(CONFIG_P73XX_OVERCLOCK)
 	#define TEGRA_MAX_CLOCK		1600000000
 	#define TEGRA_MAX_3D_CLOCK		400000000
 #else
@@ -2022,7 +2022,7 @@ static struct clk tegra_pll_u = {
 };
 
 static struct clk_pll_freq_table tegra_pll_x_freq_table[] = {
-#if defined(CONFIG_P75XX_OVERCLOCK)
+#if defined(CONFIG_P73XX_OVERCLOCK)
 	/* 1.6 GHz */
 	{ 12000000,	1600000000, 800, 6, 1, 12},
 	{ 13000000, 1600000000, 985, 8, 1, 12},
@@ -2749,7 +2749,7 @@ static void tegra2_init_one_clock(struct clk *c)
  * must be ascending.
  */
 
-#if defined(CONFIG_P75XX_OVERCLOCK)
+#if defined(CONFIG_P73XX_OVERCLOCK)
 static struct cpufreq_frequency_table freq_table_750MHz[] = {
 	{ 0, 216000 },
 	{ 1, 312000 },
@@ -2828,7 +2828,7 @@ static struct cpufreq_frequency_table freq_table_1p6GHz[] = {
 	{ 11, 1600000 },
 	{ 12, CPUFREQ_TABLE_END },
 };
-#else /* CONFIG_P75XX_OVERCLOCK */
+#else /* CONFIG_P73XX_OVERCLOCK */
 
 static struct cpufreq_frequency_table freq_table_750MHz[] = {
 	{ 0, 216000 },
@@ -2863,11 +2863,11 @@ static struct cpufreq_frequency_table freq_table_1p2GHz[] = {
 	{ 8, 1200000 },
 	{ 9, CPUFREQ_TABLE_END },
 };
-#endif /* CONFIG_P75XX_OVERCLOCK */
+#endif /* CONFIG_P73XX_OVERCLOCK */
 
 static struct tegra_cpufreq_table_data cpufreq_tables[] = {
 	{ freq_table_750MHz, 1, 4, 0, 4 },
-#if defined(CONFIG_P75XX_OVERCLOCK)
+#if defined(CONFIG_P73XX_OVERCLOCK)
 	{ freq_table_1p0GHz, 2, 6, 0, 8 },
 	{ freq_table_1p2GHz, 2, 7, 0, 9 },
 	{ freq_table_1p4GHz, 2, 6, 0, 8 },
