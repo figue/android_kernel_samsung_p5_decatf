@@ -632,12 +632,12 @@ config TEGRA2_VOLTAGE_CONTROL
 	help
 	  Tegra 2 voltage control
 
-config P75XX_OVERCLOCK
-	bool "Overclock p4 and p4wifi"
-	depends on ARCH_TEGRA_2x_SOC && (MACH_SAMSUNG_P4WIFI || MACH_SAMSUNG_P4 || MACH_SAMSUNG_P4TMO || MACH_SAMSUNG_P4LTE || MACH_SAMSUNG_P4LTEUSCC)
+config P73XX_OVERCLOCK
+	bool "Overclock p5 and p5wifi"
+	depends on ARCH_TEGRA_2x_SOC && (MACH_SAMSUNG_P5WIFI || MACH_SAMSUNG_P5 || MACH_SAMSUNG_P5TMO)
 	default n
 	help
-	  Overclock p4 and p4wifi
+	  Overclock p5 and p5wifi
 
 endif
 

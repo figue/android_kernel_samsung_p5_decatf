@@ -49,8 +49,8 @@ obj-$(CONFIG_TEGRA_ARB_SEMAPHORE)       += arb_sema.o
 
 ifeq ($(CONFIG_TEGRA_SILICON_PLATFORM),y)
 obj-y                                   += dvfs.o
-ifeq ($(CONFIG_P75XX_OVERCLOCK),y)
-obj-$(CONFIG_ARCH_TEGRA_2x_SOC)         += tegra2_dvfs_p75xx_oc.o
+ifeq ($(CONFIG_P73XX_OVERCLOCK),y)
+obj-$(CONFIG_ARCH_TEGRA_2x_SOC)         += tegra2_dvfs_p73xx_oc.o
 else
 obj-$(CONFIG_ARCH_TEGRA_2x_SOC)         += tegra2_dvfs.o
 endif
